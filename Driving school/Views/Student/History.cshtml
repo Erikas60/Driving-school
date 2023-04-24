@@ -1,0 +1,104 @@
+﻿@using Driving_school.Services;
+@model Driving_school.Models.Lesson
+
+@{
+    string userName = TempData["UserName"].ToString();
+    TempData.Keep("UserName");
+    SecurityDAO securityDAO = new SecurityDAO();
+    List<Lesson> userLessons = securityDAO.FindLessonsByStudentNameHistory(userName);
+}
+
+<head>
+    <link rel="stylesheet" href="/css/StudentSchedule.css">
+</head>
+
+<h1>Lesson History</h1>
+@if (userLessons.Count == 0)
+{
+    <p>No lessons found for user @userName</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Lesson Name</th>
+                <th>Instructor</th>
+                <th>Date</th>
+                <th>Duration</th>
+                <th>Grade</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var lesson in userLessons)
+            {
+                
+                List<Mistake> mistakes = securityDAO.FindMistakesByLesson(lesson.Name, userName);
+
+                <tr class="clickable-row">
+                    <th>@lesson.Name</th>
+                    <td>@lesson.InstructorName</td>
+                    <td>@lesson.Date</td>
+                    <td>@lesson.Duration</td>
+                    <td>@lesson.Grade</td>
+
+                    @*<div class="container1">
+                        <button type="submit" class="btn1" onlick="openPopup()">Preview</button>
+                        <div class="popup" id="popup">
+                            <h2>Descript...</h2>
+                            <button type="button" onlick="closePopup()">close</button>
+                        </div>
+                    </div>
+                    
+                    <script>
+                        let popup = document.getElementById("popup");
+                        function openPopup() {
+                            popup.classList.add("open-popup");
+                        }
+                        function closePopup() {
+                            popup.classList.remove("open-popup");
+                        }
+                    </script>*@ 
+                </tr>
+                <tr class="extra-info" style="display:none;">
+                    <td colspan="5">
+                        <ul>
+                            @foreach (var mistake in mistakes)
+                            {
+                            <li>@mistake.Description</li>
+                            }
+                        </ul>
+                    </td>
+                </tr>
+
+            @*<thead>
+                <link rel="stylesheet" href="~style.css" />
+                <tr>
+                    
+                    
+                   
+                    
+                </tr>
+            </thead>
+                foreach(var mistake in mistakes)
+                {
+                    
+                       
+                        <td>@mistake.Description</td>
+
+                    
+                    
+                }
+            }*@
+            }
+        </tbody>
+    </table>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".clickable-row").click(function () {
+                $(this).next(".extra-info").toggle();
+            });
+        });
+    </script>
+}

@@ -1,0 +1,49 @@
+﻿body {
+    background-color: lightcyan;
+}
+
+.table {
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+    .table th {
+        text-align: left;
+        font-weight: bold;
+        background-color: #f2f2f2;
+    }
+
+    .table th,
+    .table td {
+        padding: 8px;
+        border: 1px solid #ccc;
+    }
+
+    .table td {
+        vertical-align: middle;
+    }
+
+        .table td a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+            .table td a:hover {
+                text-decoration: underline;
+            }
+
+        .table td:last-child {
+            text-align: center;
+        }
+
+            .table td:last-child a {
+                margin-right: 5px;
+            }
+
+                .table td:last-child a:last-child {
+                    margin-right: 0;
+                }
+
+                .table td:last-child a i {
+                    font-size: 18px;
+                }

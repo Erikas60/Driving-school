@@ -1,0 +1,131 @@
+﻿.navbar {
+    background-color: #333333 !important;
+    height: 60px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    color: #ffffff !important;
+}
+
+.navbar__logo {
+    color: #ffffff !important;
+    font-size: 24px !important;
+    font-weight: bold !important;
+    padding-left: 20px !important;
+}
+
+.navbar__buttons {
+    display: flex !important;
+    justify-content: flex-end !important;
+    margin-right: 20px !important;
+}
+
+.navbar__button {
+    color: #ffffff !important;
+    background-color: #1c1c1c !important;
+    border: none !important;
+    padding: 10px 20px !important;
+    margin-left: 10px !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    outline-color: #000 !important;
+}
+
+    .navbar__button:hover {
+        color: #000000 !important;
+        background-color: #00cc66 !important;
+        outline: none !important;
+    }
+
+.navbar-nav li a {
+    color: #ffffff !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    padding: 15px !important;
+    border-radius: 5px !important;
+}
+
+.navbar-nav li a:hover {
+    color: #000000 !important;
+    background-color: #00cc66 !important;
+    outline: none !important;
+}
+
+.navbar-nav li.active a {
+    background-color: #00cc66 !important;
+    color: #ffffff !important;
+}
+
+.btn-primary1 {
+    color: #ffffff !important;
+    background-color: #1b6ec2 !important;
+    border-color: #1861ac !important;
+}
+.btn1 {
+    padding: 10px 60px !important;
+    background: none !important;
+    color: #000 !important;
+    border: 0 !important;
+    outline: none !important;
+    cursor: pointer !important;
+    font-size: 22px !important;
+    font-weight: 500 !important;
+    border-radius: 30px !important;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #ffffff !important;
+    background-color: #1b6ec2 !important;
+    border-color: #1861ac !important;
+}
+.container1 {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+/*.popup {
+    width: 400px;
+    background: #ffffff;
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0.1);
+    text-align: center;
+    padding: 0 30px 30px;
+    color: #333;
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+}
+
+.open-popup {
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%,-50%) scale(1);
+}
+
+.popup button {
+    width: 100px;
+    margin-top: 50px;
+    padding: 10px 0;
+    background: #6fd649;
+    color: #ffffff;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}*/
+.navbar-brand {
+    font-size: 30px !important;
+    font-weight: 500 !important;
+    color: #fff !important;
+}
+.navbar-body {
+
+}

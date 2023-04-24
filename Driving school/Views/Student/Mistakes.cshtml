@@ -1,0 +1,41 @@
+﻿@using Driving_school.Services;
+@model Driving_school.Models.Mistake
+
+@*@{
+    string ID = "1";
+    SecurityDAO securityDAO = new SecurityDAO();
+    List<Mistake> MistakeList = securityDAO.FindMistakeByLessonID(ID);
+}
+
+<h1>Mistakes</h1>
+
+@if (userLessons.Count == 0)
+{
+    <p>No lessons found for user @userName</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Lesson Name</th>
+                <th>Instructor Name</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var lesson in userLessons)
+            {
+                <tr>
+                    <td>@lesson.Name</td>
+                    <td>@lesson.InstructorName</td>
+                    <td>@lesson.Description</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+<div>
+    @Html.ActionLink("Back to list", "ToList", "Student")
+</div>*@

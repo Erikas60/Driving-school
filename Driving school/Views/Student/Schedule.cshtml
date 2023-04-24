@@ -1,0 +1,52 @@
+﻿@using Driving_school.Services;
+@model Driving_school.Models.Lesson
+
+@{
+    string userName = TempData["UserName"].ToString();
+    TempData.Keep("UserName");
+    SecurityDAO securityDAO = new SecurityDAO();
+    List<Lesson> userLessons = securityDAO.FindLessonsByStudentNameSchedule(userName);
+}
+
+<head>
+    <link rel="stylesheet" href="/css/StudentSchedule.css">
+</head>
+
+
+<h1>Lesson Schedule</h1>
+
+@if (userLessons.Count == 0)
+{
+    <p>No lessons found for user @userName</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Lesson Name</th>
+                <th>Instructor</th>
+                <th>Date</th>
+                <th>Duration</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var lesson in userLessons)
+            {
+
+
+                <tr>
+                    <td>@lesson.Name</td>
+                    <td>@lesson.InstructorName</td>
+                    <td>@lesson.Date</td>
+                    <td>@lesson.Duration</td>
+                </tr>
+
+            
+            }
+
+        </tbody>
+    </table>
+
+}

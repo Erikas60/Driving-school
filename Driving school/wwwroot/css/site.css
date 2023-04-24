@@ -1,0 +1,247 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    display: flex;
+    /*justify-content: center;*/
+    align-items: center;
+    margin-bottom: 60px;
+    min-height: 100vh;
+    background: #FEFEFE;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+.container1{
+    padding: 40px;
+    border-radius: 20px;
+    border: 8px solid #223243;
+    box-shadow: -5px -5px 15px rgba(255,255,255,0.1),
+        5px 5px 15px rgba(0,0,0,0.35),
+        inset -5px -5px 15px rgba(255,255,255,0.1),
+        inset 5px 5px 15px rgba(0,0,0,0.35);
+}
+
+.container1 .form{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+     gap: 25px;
+ }
+
+.container1 .form.signin,
+.container1.signinForm .form.signup
+{
+    display: none;
+}
+
+.container1.signinForm .form.signin{
+    display: flex;
+}
+
+.container1 .form h2 {
+    color: #ffff;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+}
+
+.container1 .form .inputBox{
+     position: relative;
+     width: 300;
+ }
+
+.container1 .form .inputBox input{
+     padding: 12px 10px 12px 48px;
+     border: none;
+     width: 100%;
+     background: #223243;
+     border: 1px solid rgba(0,0,0,0.1);
+     color: #fff;
+     font-weight: 300;
+     font-size: 1em;
+     box-shadow: -5px -5px 15px rgba(255,255,255,0.1);
+     5px 5px 15px rgba(0,0,0,0.35);
+     transition: 0.5s;
+     outline: none;
+ }
+
+.container1 .form .inputBox span {
+     position: absolute;
+     left: 0;
+     padding: 12px 10px 12px 48px;
+     pointer-events: none;
+     font-size: 1em;
+     font-weight: 300;
+     transition: 0.5s;
+     letter-spacing: 0.05em;
+     color: rgba(255,255,255,0.1);
+}
+
+.container1 .form .inputBox input:valid ~ span,
+.container1 .form .inputBox input:focus ~ span
+{
+     color: #00dfc4;
+     border: 1px solid #00dfc4;
+     background: #223243;
+     transform: translateX(25px) translateY(-7px);
+     font-size: 0.6em;
+     padding: 0 8px;
+     border-radius: 10px;
+     letter-spacing: 0.1em;
+}
+
+.container1 .form .inputBox input:valid,
+.container1 .form .inputBox input:focus{
+    border: 1px solid #00dfc4;
+
+}
+.container1 .form .inputBox i {
+     position: absolute;
+     top: 15px;
+     left: 16px;
+     width: 25px;
+     padding: 2px 0;
+     color: #00dfc4;
+     border-right: 1px solid #00dfc4;
+}
+
+.container1 .form .inputBox input[type="submit"]
+{
+    background: #00dfc4;
+    color: #223243;
+    padding: 10px 0;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: -5px -5px 15px rgba(255,255,255,0.1),
+        5px 5px 15px rgba(0,0,0,0.35),
+        inset -5px -5px 15px rgba(255,255,255,0.1),
+        inset 5px 5px 15px rgba(0,0,0,0.35);
+}
+
+.container1 .form p{
+    color: #rgba(255,255,255,0.5);
+    font-size: 0.75em;
+    font-weight 300;
+}
+
+.container1 .form p a{
+    font-weight 500;
+    color: #fff; 
+}
+/*.container1 {
+    
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}*/
+
+.btn1 {
+    padding: 10px 60px;
+    background: #fff;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: 500;
+    border-radius: 30px;
+}
+
+.popup {
+    width: 400px;
+    background: #fff;
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0.1);
+    text-align: center;
+    padding: 0 30px 30px;
+    color: #333;
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+}
+
+.open-popup {
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%,-50%) scale(1);
+}
+
+.popup button {
+    width: 100px;
+    margin-top: 50px;
+    padding: 10px 0;
+    background: #6fd649;
+    color: #fff;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
