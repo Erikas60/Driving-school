@@ -13,6 +13,7 @@ namespace Driving_school.Models
         public int Duration { get; set; }
         public string StudentUsername { get; set; }
         public int Grade { get; set; }
+        public string Description { get; set; }
         public IEnumerator GetEnumerator()
         {
             yield return Id;
@@ -22,6 +23,7 @@ namespace Driving_school.Models
             yield return Duration;
             yield return StudentUsername;
             yield return Grade;
+            yield return Description;
         }
     }
 }

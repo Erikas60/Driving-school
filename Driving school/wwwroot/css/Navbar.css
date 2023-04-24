@@ -22,7 +22,7 @@
 
 .navbar__button {
     color: #ffffff !important;
-    background-color: #1c1c1c !important;
+    background-color: #127C78 !important;
     border: none !important;
     padding: 10px 20px !important;
     margin-left: 10px !important;
@@ -34,7 +34,7 @@
 
     .navbar__button:hover {
         color: #000000 !important;
-        background-color: #00cc66 !important;
+        background-color: #000000 !important;
         outline: none !important;
     }
 
@@ -48,11 +48,11 @@
     border-radius: 5px !important;
 }
 
-.navbar-nav li a:hover {
-    color: #000000 !important;
-    background-color: #00cc66 !important;
-    outline: none !important;
-}
+    .navbar-nav li a:hover {
+        color: #000000 !important;
+        background-color: #FFFFFF !important;
+        outline: none !important;
+    }
 
 .navbar-nav li.active a {
     background-color: #00cc66 !important;
@@ -61,8 +61,8 @@
 
 .btn-primary1 {
     color: #ffffff !important;
-    background-color: #1b6ec2 !important;
-    border-color: #1861ac !important;
+    background-color: #127C78 !important;
+    border-color: #083837 !important;
 }
 .btn1 {
     padding: 10px 60px !important;
