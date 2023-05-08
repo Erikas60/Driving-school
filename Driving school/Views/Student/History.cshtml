@@ -74,13 +74,21 @@ else
                     <td>@lesson.Duration hours</td>
                     <td>@(lesson.Grade)</td>
                 </tr>
-                <tr class="extra-info" style="display:none;">
-                    <td colspan="5">
-                        <ul>
-                            @foreach (var mistake in mistakes)
-                            {
-                                <li>@mistake.Description</li>
-                            }
+                    <tr class="extra-info" style="display:none;">
+                        <td colspan="5">
+                            <ul>
+                                @{
+                                    int counter =  0;
+                                    @foreach (var mistake in mistakes)
+                                    {
+                                        counter++;
+                                        <li>@mistake.Description</li>
+                                    }
+                                    if (counter == 0)
+                                    {
+                                        <li>No mistakes were added</li>
+                                    }
+                                }
                         </ul>
                     </td>
                 </tr>

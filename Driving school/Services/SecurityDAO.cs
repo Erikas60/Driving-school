@@ -182,7 +182,7 @@ namespace Driving_school.Services
         {
 
             List<Lesson> foundLessons = new List<Lesson>();
-            string sqlStatement = "SELECT * FROM dbo.Lessons WHERE StudentUsername = @name AND Date < @date";
+            string sqlStatement = "SELECT * FROM dbo.Lessons WHERE StudentUsername = @name AND Date < @date ORDER BY Date ASC";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -215,7 +215,7 @@ namespace Driving_school.Services
         {
 
             List<Lesson> foundLessons = new List<Lesson>();
-            string sqlStatement = "SELECT * FROM dbo.Lessons WHERE StudentUsername = @name AND Date > @date";
+            string sqlStatement = "SELECT * FROM dbo.Lessons WHERE StudentUsername = @name AND Date > @date ORDER BY Date ASC";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -281,7 +281,7 @@ namespace Driving_school.Services
         {
 
             List<Lesson> foundLessons = new List<Lesson>();
-            string sqlStatement = "SELECT * FROM dbo.Lessons WHERE InstructorName = @name AND Date < @date";
+            string sqlStatement = "SELECT * FROM dbo.Lessons WHERE InstructorName = @name AND Date < @date ORDER BY Date ASC";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
