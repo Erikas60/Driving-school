@@ -1,5 +1,6 @@
 ﻿body {
-    background-color: lightcyan;
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
 }
 
 .table {
@@ -47,3 +48,12 @@
                 .table td:last-child a i {
                     font-size: 18px;
                 }
+.btn-primary {
+    background-color: #127C78;
+    border-color: #083837;
+}
+    .btn-primary:hover {
+        color: #127C78;
+        background-color: #ffffff;
+        border-color: #127C78;
+    }

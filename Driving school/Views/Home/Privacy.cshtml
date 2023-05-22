@@ -3,10 +3,26 @@
 }
 
 <environment include="Development">
-    <link rel="stylesheet" href="~/css/Privacy.css" />
+    <link rel="stylesheet" href="~/css/Details.css" />
 </environment>
-<h1>@ViewData["Title"]</h1>
+<h1 class="informacija">@ViewData["Title"]</h1>
 
-<p> This system is intended for driving school students.</p>
-<p> System was created by the team "Komanda 3".</p>
-<p>  Team members: Erikas Briauka, Simas Tijusas, Justinas Saparnis, Matas Palujanskas.</p>
+<table class ="driving-table">
+    <tr>
+        <td class="tekstas"  colspan="2" style="text-align: center; font-weight: bold;">This system is intended for driving school students.</td>
+    </tr>
+    <tr>
+        <td class="tekstas" colspan="2" style="text-align: center; font-weight: bold;">System was created by the team "Komanda 3".</td>
+    </tr>
+    <tr>
+        <td class="tekstas"  colspan="2" style="text-align: center; font-weight: bold;">Team members:</td>
+    </tr>
+    <tr>
+        <td class ="tekstas1" style="text-align: center;">Erikas Briauka</td>
+        <td class="tekstas1"  style="text-align: center;">Simas Tijusas</td>
+    </tr>
+    <tr>
+        <td class="tekstas1" style="text-align: center;">Justinas Saparnis</td>
+        <td class="tekstas1" style="text-align: center;">Matas Palujanskas</td>
+    </tr>
+</table>

@@ -182,7 +182,7 @@ namespace Driving_school.Services
         {
 
             List<Lesson> foundLessons = new List<Lesson>();
-            string sqlStatement = "SELECT * FROM dbo.Lessons WHERE StudentUsername = @name AND Date < @date";
+            string sqlStatement = "SELECT * FROM dbo.Lessons WHERE StudentUsername = @name AND Date < @date ORDER BY Date ASC";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -215,7 +215,7 @@ namespace Driving_school.Services
         {
 
             List<Lesson> foundLessons = new List<Lesson>();
-            string sqlStatement = "SELECT * FROM dbo.Lessons WHERE StudentUsername = @name AND Date > @date";
+            string sqlStatement = "SELECT * FROM dbo.Lessons WHERE StudentUsername = @name AND Date > @date ORDER BY Date ASC";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -244,7 +244,69 @@ namespace Driving_school.Services
             return foundLessons;
 
         }
-        public List<Mistake> FindMistakesByLesson(string lessonname, string username)
+        public List<User> FindAllStudents()
+        {
+
+            List<User> foundStudents = new List<User>();
+            string sqlStatement = "SELECT * FROM dbo.Students";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(sqlStatement, connection);
+
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        foundStudents.Add(new User { Id = (int)reader[0], Name = (string)reader[1], Password = (string)reader[2]});
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            return foundStudents;
+
+        }
+        public List<Lesson> FindLessonsByStudentName(string user)
+		{
+
+			List<Lesson> foundLessons = new List<Lesson>();
+			string sqlStatement = "SELECT * FROM dbo.Lessons WHERE StudentUsername = @name ORDER BY Date ASC";
+
+			using (SqlConnection connection = new SqlConnection(connectionString))
+			{
+				SqlCommand command = new SqlCommand(sqlStatement, connection);
+
+				command.Parameters.Add("@name", System.Data.SqlDbType.VarChar, 40).Value = user;
+				command.Parameters.Add("@date", System.Data.SqlDbType.DateTime).Value = DateTime.Now;
+
+
+
+				try
+				{
+					connection.Open();
+					SqlDataReader reader = command.ExecuteReader();
+					while (reader.Read())
+					{
+						foundLessons.Add(new Lesson { Id = (int)reader[0], Name = (string)reader[1], InstructorName = (string)reader[2], Date = (DateTime)reader[3], Duration = (int)reader[4], StudentUsername = (string)reader[5], Grade = (int)reader[6] });
+					}
+
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine(ex.Message);
+				}
+			}
+			return foundLessons;
+
+		}
+		public List<Mistake> FindMistakesByLesson(string lessonname, string username)
         {
 
             List<Mistake> foundMistakes = new List<Mistake>();
@@ -276,6 +338,83 @@ namespace Driving_school.Services
             }
             return foundMistakes;
 
+        }
+        public List<Lesson> FindLessonsByInstructorName(string user)
+        {
+
+            List<Lesson> foundLessons = new List<Lesson>();
+            string sqlStatement = "SELECT * FROM dbo.Lessons WHERE InstructorName = @name AND Date < @date ORDER BY Date ASC";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(sqlStatement, connection);
+
+                command.Parameters.Add("@name", System.Data.SqlDbType.VarChar, 40).Value = user;
+                command.Parameters.Add("@date", System.Data.SqlDbType.DateTime).Value = DateTime.Now;
+
+
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        foundLessons.Add(new Lesson { Id = (int)reader[0], Name = (string)reader[1], InstructorName = (string)reader[2], Date = (DateTime)reader[3], Duration = (int)reader[4], StudentUsername = (string)reader[5], Grade = (int)reader[6] });
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            return foundLessons;
+
+        }
+        public void UpdateLessonGrade(int id, int grade)
+        {
+            string sqlStatement = "UPDATE dbo.Lessons SET Grade = @grade WHERE Id = @id";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(sqlStatement, connection);
+
+                command.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = id;
+                command.Parameters.Add("@grade", System.Data.SqlDbType.Int).Value = grade;
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
+        public void UpdateDescription(int id, string description)
+        {
+            string sqlStatement = "UPDATE dbo.Lessons SET Description = @description WHERE Id = @id";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(sqlStatement, connection);
+
+                command.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = id;
+                command.Parameters.Add("@description", System.Data.SqlDbType.VarChar, 255).Value = description;
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
         }
 
     }

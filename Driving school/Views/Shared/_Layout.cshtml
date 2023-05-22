@@ -1,4 +1,14 @@
-﻿<!DOCTYPE html>
+﻿@{
+    string userName = "";
+    if (!TempData["UserName"].Equals(null))
+    {
+        userName = TempData["UserName"].ToString();
+        TempData.Keep("UserName");
+    }
+        
+
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -36,7 +46,13 @@
                         @if (TempData["UserType"] != null && TempData["UserType"].Equals("Teacher"))
                         {
                             <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="AddLesson">Lesson Schedule</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="AddLesson">Lesson Scheduling</a>
+                            </li>
+                            <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="AddMistake">Append Mistake</a>
+                            </li>
+                            <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="Grading">Grading</a>
                             </li>
                             TempData.Keep("UserType");
                         }
@@ -55,6 +71,11 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                             </li>
                         </ul>
+                        
+                            <li>
+                                <a>@userName</a>
+                            </li>
+                       
 
                         <ul class="navbar-nav d-flex justify-content-end">
                             <li class="nav-item">
@@ -64,14 +85,36 @@
                     }
                     else
                     {
-                        <ul class="navbar-nav d-flex justify-content-end flex-grow-1">
+                        @*<ul class="navbar-nav d-flex flex-grow-1">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <li class="nav-item">
+                                        <a asp-controller="TeacherInfo" asp-action="Index" class="btn btn1">Teachers</a>
+                                    </li>
+                                </div>
+                                <div class="col-sm-6">
+                                    <li class="nav-item">
+                                        <a asp-controller="Cars" asp-action="Index" class="btn btn1">Cars</a>
+                                    </li>
+                                </div>
+                            </div>
+                            <li class="nav-item ml-auto">
+                                <a asp-controller="Login" asp-action="Index" class="btn btn-primary1">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="Register" asp-action="Create" class="btn btn1">Register</a>
+                            </li>
+                        </ul>*@
+                        <ul class="navbar-nav d-flex flex-grow-1">
                             <li class="nav-item">
                                 <a asp-controller="TeacherInfo" asp-action="Index" class="btn btn1">Teachers</a>
                             </li>
                             <li class="nav-item">
                                 <a asp-controller="Cars" asp-action="Index" class="btn btn1">Cars</a>
                             </li>
-                            <li class="nav-item">
+                        </ul>
+                        <ul class="navbar-nav d-flex justify-content-end">
+                            <li class="nav-item ml-auto">
                                 <a asp-controller="Login" asp-action="Index" class="btn btn-primary1">Login</a>
                             </li>
                             <li class="nav-item">

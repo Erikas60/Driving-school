@@ -1,5 +1,6 @@
 ﻿body {
-    background-color: lightcyan;
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
 }
 
 .table {
@@ -45,3 +46,22 @@
                 .table td:last-child a i {
                     font-size: 18px;
                 }
+
+.driving-table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 80%;
+    background-color: #808080;
+    border-radius: 10px;
+}
+.tekstas{
+     font-size: 30px;
+
+}
+.tekstas1 {
+    font-size: 25px;
+    color: #f2f2f2;
+}
+.informacija {
+    text-align: center;
+}

@@ -24,6 +24,7 @@
     <None Remove="Views\Login\NewFile.txt" />
     <None Remove="Views\Student\NewFile.txt" />
     <None Remove="Views\TeacherInfo\NewFile.txt" />
+    <None Remove="Views\Teacher\NewFile.txt" />
   </ItemGroup>
 
   <ItemGroup>

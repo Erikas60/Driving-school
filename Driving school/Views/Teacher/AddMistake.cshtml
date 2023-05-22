@@ -1,17 +1,19 @@
 ﻿@model Driving_school.Models.Mistake
+@using Driving_school.Services;
 <head>
     <link rel="stylesheet" href="/css/StudentSchedule.css">
 </head>
 @{
     string userName = TempData["UserName"].ToString();
     TempData.Keep("UserName");
-   
+    SecurityDAO securityDAO = new SecurityDAO();
+    List<User> users = securityDAO.FindAllStudents();
 }
 <h4>Lesson</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="AddMistake">
+        <form asp-action="AddMistake" asp-route-instructorName="@userName">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
@@ -20,14 +22,20 @@
             </div>
             <div class="form-group">
                 <label asp-for="StudentUsername" class="control-label"></label>
-                <input asp-for="StudentUsername" class="form-control" />
+                <select asp-for="StudentUsername" class="form-control" id="student-dropdown">
+                    <option value="">-- Select a user --</option>
+                    @foreach (var user in users)
+                    {
+                        <option value="@user.Name">@user.Name</option>
+                    }
+                </select>
                 <span asp-validation-for="StudentUsername" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="InstructorName" class="control-label"></label>
                 <input asp-for="InstructorName" class="form-control" />
                 <span asp-validation-for="InstructorName" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
                 <input asp-for="Description" class="form-control" />

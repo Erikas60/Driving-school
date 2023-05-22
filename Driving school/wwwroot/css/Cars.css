@@ -1,6 +1,7 @@
 ﻿/* Apply a light blue background color to the entire page */
 body {
-    background-color: lightcyan;
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
 }
 
 /* Center the page title and round the edges */

@@ -30,6 +30,22 @@ namespace Driving_school.Controllers
             securityService.AddMistake(mistake);
             return View("AddMistake");
         }
+        public IActionResult Grading()
+        {
+            return View("Grading");
+        }
+        [HttpPost]
+        public IActionResult Grading(int id, int grade, string description)
+        {
+            
+            SecurityDAO securityDAO = new SecurityDAO();
+            if (string.IsNullOrEmpty(grade.ToString())) { }
+            else { securityDAO.UpdateLessonGrade(id, grade); }
+            //if (string.IsNullOrEmpty(description)) { }
+            //else { securityDAO.UpdateDescription(id, description); }
+            securityDAO.UpdateDescription(id, description);
+            return RedirectToAction("Grading");
+        }
 
     }
 }

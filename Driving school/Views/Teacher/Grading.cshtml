@@ -1,0 +1,81 @@
+﻿@using Driving_school.Services;
+@model Driving_school.Models.Lesson
+@using Driving_school.Models;
+@{
+    string userName = TempData["UserName"].ToString();
+    TempData.Keep("UserName");
+    SecurityDAO securityDAO = new SecurityDAO();
+    List<Lesson> userLessons = securityDAO.FindLessonsByInstructorName(userName);
+}
+<head>
+    <link rel="stylesheet" href="/css/TeacherGrading.css">
+</head>
+<body>
+    @if (userLessons.Count == 0)
+    {
+        <p>No lessons found for grading</p>
+    }
+    else
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>Lesson Name</th>
+                    <th>Student Name</th>
+                    <th>Date</th>
+                    <th>Duration</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var lesson in userLessons)
+                {
+                    <tr class="clickable-row">
+                        <td>@lesson.Name</td>
+                        <td>@lesson.StudentUsername</td>
+                        <td>@lesson.Date.ToShortDateString()</td>
+                        <td>@lesson.Duration Hours</td>
+                        <td>
+                            @if (lesson.Grade != 0)
+                            {
+                                @lesson.Grade
+                            }
+                            else
+                            {
+                                <form asp-controller="Teacher" asp-action="Grading" method="post">
+                                    <input type="hidden" name="lessonId" value="@lesson.Id" />
+                                    <select name="grade">
+                                        <option value="">Select grade</option>
+                                        <option value="10">10</option>
+                                        <option value="9">9</option>
+                                        <option value="8">8</option>
+                                        <option value="7">7</option>
+                                        <option value="6">6</option>
+                                        <option value="5">5</option>
+                                        <option value="4">4</option>
+                                        <option value="3">3</option>
+                                        <option value="2">2</option>
+                                        <option value="1">1</option>
+                                    </select>
+                                    <input type="hidden" name="id" value="@lesson.Id" />
+                                    <input type="text" name="description" placeholder="Add description" />
+                                    <button type="submit">Grade</button>
+                                </form>
+                            }
+                        </td>
+                        <td>@(lesson.Grade != 0 ? lesson.Description : "")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $(".clickable-row").click(function () {
+                    $(this).next(".extra-info").toggle();
+                });
+            });
+        </script>
+    }
+</body>
