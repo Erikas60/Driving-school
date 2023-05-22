@@ -1,4 +1,14 @@
-﻿<!DOCTYPE html>
+﻿@{
+    string userName = "";
+    if (!TempData["UserName"].Equals(null))
+    {
+        userName = TempData["UserName"].ToString();
+        TempData.Keep("UserName");
+    }
+        
+
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -36,7 +46,10 @@
                         @if (TempData["UserType"] != null && TempData["UserType"].Equals("Teacher"))
                         {
                             <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="AddLesson">Lesson Schedule</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="AddLesson">Lesson Scheduling</a>
+                            </li>
+                            <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="AddMistake">Append Mistake</a>
                             </li>
                             <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="Grading">Grading</a>
@@ -58,6 +71,11 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                             </li>
                         </ul>
+                        
+                            <li>
+                                <a>@userName</a>
+                            </li>
+                       
 
                         <ul class="navbar-nav d-flex justify-content-end">
                             <li class="nav-item">

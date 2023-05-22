@@ -1,31 +1,64 @@
 ﻿@model Driving_school.Models.User
+@using Driving_school.Services;
+@{
+    string userName = TempData["UserName"].ToString();
+    TempData.Keep("UserName");
+    SecurityDAO securityDAO = new SecurityDAO();
+    List<Lesson> userLessons = securityDAO.FindLessonsByStudentName(userName);
+}
 <head>
     <link rel="stylesheet" href="/css/StudentSchedule.css">
 </head>
 <div>
-    <h4>Student Home Page</h4>
+    <h4>Student Home page</h4>
     <hr />
-    @*<dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-    </dl>*@
-</div>
-<div>
-    @*@Html.ActionLink("History", "History", "Student")*@
+    <div>
+        <h2>Today's schedule</h2>
+        @if (userLessons.Count == 0)
+        {
+            <p>No lessons found for @userName</p>
+        }
+        else
+        {
+            <table>
+
+                <tbody>
+                    @{
+                        bool tmp = false;
+                        int counter = 0;
+                        foreach (var lesson in userLessons)
+                        {
+                            if (lesson.Date.Date == DateTime.Today)
+                            {
+                                if (!tmp)
+                                {
+                                    <thead>
+                                        <tr>
+                                            <th>Lesson Name</th>
+                                            <th>Instructor</th>
+                                            <th>Time</th>
+                                            <th>Duration</th>
+
+                                        </tr>
+                                    </thead>
+                                    tmp=true;
+                                }
+                                <tr>
+                                    <td>@lesson.Name</td>
+                                    <td>@lesson.InstructorName</td>
+                                    <td>@lesson.Date.ToString("HH:mm")</td>
+                                    <td>@lesson.Duration</td>
+                                </tr>
+                                counter++;
+                            }
+                        }
+                        if (counter == 0)
+                        {
+                            <p>No lessons for @userName</p>
+                        }
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
 </div>

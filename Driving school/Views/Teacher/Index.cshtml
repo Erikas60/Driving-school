@@ -14,7 +14,7 @@
     <hr />
     <div>
         <h2>Today's schedule</h2>
-        @if (userLessons.Count == 0)
+        @if (userLessons.Count(l => l.Date.Date == DateTime.Today) == 0)
         {
             <p>No lessons found for @userName</p>
         }
@@ -24,6 +24,7 @@
                 <thead>
                     <tr>
                         <th>Lesson Name</th>
+                        <th>Student Name</th>
                         <th>Instructor</th>
                         <th>Time</th>
                         <th>Duration</th>
@@ -32,31 +33,22 @@
                 </thead>
                 <tbody>
                     @{
-                        int counter = 0;
                         foreach (var lesson in userLessons)
                         {
                             if (lesson.Date.Date == DateTime.Today)
                             {
                                 <tr>
                                     <td>@lesson.Name</td>
+                                    <td>@lesson.StudentUsername</td>
                                     <td>@lesson.InstructorName</td>
-                                    <td>@lesson.Date.ToString("HH:mm")</td>
+                                    <td>@lesson.Date.ToString("HH:mm tt")</td>
                                     <td>@lesson.Duration</td>
                                 </tr>
-                                counter++;
                             }
-                        }
-                        if (counter == 0)
-                        {
-                            <p>No lessons for @userName</p>
                         }
                     }
                 </tbody>
             </table>
         }
     </div>
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
 </div>
